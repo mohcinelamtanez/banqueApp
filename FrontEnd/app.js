@@ -3,6 +3,7 @@ const API_BASE_URL = 'http://localhost:8080/banqueApp';
 let clients = [];
 //bonjour 
 //allo 
+// boussi lwawa 
 let loans = [];
 let currentStep = 1;
 let currentClientId = null;
