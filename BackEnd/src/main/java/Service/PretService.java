@@ -1,4 +1,4 @@
-package Servie;
+package Service;
 
 import Entite.Pret;
 import Entite.NiveauRisque;

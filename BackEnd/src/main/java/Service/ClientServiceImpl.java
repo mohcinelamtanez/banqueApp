@@ -1,4 +1,4 @@
-package Servie;
+package Service;
 
 import Dao.ClientDao;
 import Dao.ClientDaoImpl;
