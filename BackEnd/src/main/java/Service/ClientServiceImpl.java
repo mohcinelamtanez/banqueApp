@@ -8,7 +8,7 @@ import Entite.Client;
 import Entite.Pret;
 import java.util.List;
 
-public class ClientServiceImpl implements Servie.ClientService {
+public class ClientServiceImpl implements ClientService {
 
     private ClientDao clientDao = new ClientDaoImpl();
     private PretDao pretDao = new PretDaoImpl();
@@ -24,6 +24,7 @@ public class ClientServiceImpl implements Servie.ClientService {
         List<Pret> pretsClient = pretDao.getPretsByClientId(id);
         for (Pret pret : pretsClient) {
             pretDao.supprimerPret(pret.getId());
+            pretDao.supprimerPret(pret.getId);
         }
 
         // Puis supprimer le client
