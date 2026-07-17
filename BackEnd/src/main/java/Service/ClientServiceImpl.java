@@ -1,4 +1,4 @@
-package Servie;
+package Service;
 
 import Dao.ClientDao;
 import Dao.ClientDaoImpl;
@@ -8,7 +8,7 @@ import Entite.Client;
 import Entite.Pret;
 import java.util.List;
 
-public class ClientServiceImpl implements Servie.ClientService {
+public class ClientServiceImpl implements Service.ClientService {
 
     private ClientDao clientDao = new ClientDaoImpl();
     private PretDao pretDao = new PretDaoImpl();

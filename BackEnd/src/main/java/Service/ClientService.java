@@ -1,4 +1,4 @@
-package Servie;
+package Service;
 
 import Entite.Client;
 import java.util.List;

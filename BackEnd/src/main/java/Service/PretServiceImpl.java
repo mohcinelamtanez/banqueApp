@@ -1,4 +1,4 @@
-package Servie;
+package Service;
 
 import Dao.PretDao;
 import Dao.PretDaoImpl;
