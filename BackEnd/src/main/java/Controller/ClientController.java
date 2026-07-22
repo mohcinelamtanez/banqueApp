@@ -2,6 +2,7 @@ package Controller;
 
 import Dao.ClientDaoImpl;
 import Entite.Client;
+import Service.ClientServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import jakarta.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.util.Map;
 @WebServlet("/client")
 public class ClientController extends HttpServlet {
 
-    private ClientDaoImpl clientDao = new ClientDaoImpl();
+    private ClientServiceImpl clientService = new ClientServiceImpl();
     private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
     @Override
@@ -37,7 +38,7 @@ public class ClientController extends HttpServlet {
             if (idParam != null && !idParam.isEmpty()) {
                 // Récupérer un client par ID
                 int id = Integer.parseInt(idParam);
-                Client client = clientDao.getClientById(id);
+                Client client = clientService.getClientById(id);
 
                 if (client != null) {
                     out.print(gson.toJson(client));
@@ -50,12 +51,12 @@ public class ClientController extends HttpServlet {
 
             } else if (searchParam != null && !searchParam.isEmpty()) {
                 // Rechercher des clients
-                List<Client> clients = clientDao.rechercherClients(searchParam);
+                List<Client> clients = clientService.rechercherClients(searchParam);
                 out.print(gson.toJson(clients));
 
             } else {
                 // Récupérer tous les clients
-                List<Client> clients = clientDao.getAllClients();
+                List<Client> clients = clientService.getAllClients();
                 out.print(gson.toJson(clients));
             }
 
@@ -105,7 +106,7 @@ public class ClientController extends HttpServlet {
             }
 
             // Ajouter le client
-            boolean success = clientDao.ajouterClient(client);
+            boolean success = clientService.ajouterClient(client);
 
             if (success && client.getId() > 0) {
                 // Retourner le client créé avec son ID
@@ -155,11 +156,11 @@ public class ClientController extends HttpServlet {
             }
 
             // Modifier le client
-            boolean success = clientDao.modifierClient(client);
+            boolean success = clientService.modifierClient(client);
 
             if (success) {
                 // Retourner le client modifié
-                Client clientModifie = clientDao.getClientById(client.getId());
+                Client clientModifie = clientService.getClientById(client.getId());
                 out.print(gson.toJson(clientModifie));
             } else {
                 response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -196,7 +197,7 @@ public class ClientController extends HttpServlet {
             }
 
             int id = Integer.parseInt(idParam);
-            boolean success = clientDao.supprimerClient(id);
+            boolean success = clientService.supprimerClient(id);
 
             if (success) {
                 Map<String, Object> result = new HashMap<>();
