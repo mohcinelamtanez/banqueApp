@@ -3,11 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.example</groupId>
-    <artifactId>banqueApp</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+
+           <!-- packaging of the application -->
+
+                <modelVersion>4.0.0</modelVersion>
+                <groupId>org.example</groupId>
+                <artifactId>banqueApp</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -21,15 +24,11 @@
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>6.0.0</version>
-
-
         </dependency>
          <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
-        <version>2.10.1</version> <!-- ou la dernière version -->
-
-
+        <version>2.10.1</version>
         </dependency>
 
         <dependency>
@@ -38,6 +37,23 @@
             <version>4.11.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.13.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-gson</artifactId>
+            <version>0.13.0</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -51,7 +67,20 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.46.1</version>
+
+                <configuration>
+                    <java>
+                        <googleJavaFormat/>
+                    </java>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+
 
 </project>

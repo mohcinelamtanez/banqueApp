@@ -1,7 +1,7 @@
 package Entite;
 
 public enum Statut {
-    En_cours ,
-    Rembourse ,
-    Refuse
+  En_cours,
+  Rembourse,
+  Refuse
 }
